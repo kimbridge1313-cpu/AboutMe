@@ -750,6 +750,34 @@ export default function LowenResumeDemoHub() {
                           ))}
                         </div>
                       ) : null}
+                      {card.images?.length ? (
+                        <div className="mt-3 grid grid-cols-2 gap-2">
+                          {card.images.map((image) => (
+                            <figure key={image.src} className="overflow-hidden rounded-xl border border-zinc-200 bg-white">
+                              <img
+                                src={image.src}
+                                alt={image.alt}
+                                className="h-28 w-full object-cover"
+                                onError={(e) => {
+                                  const img = e.currentTarget;
+                                  img.style.display = "none";
+                                  const next = img.nextElementSibling as HTMLElement | null;
+                                  if (next) next.style.display = "flex";
+                                }}
+                              />
+                              <div className="hidden h-28 w-full items-center justify-center bg-zinc-50 px-2 text-center text-[11px] leading-5 text-zinc-400">
+                                圖片暫時無法載入
+                              </div>
+                            </figure>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </main>
       </div>
     </div>
