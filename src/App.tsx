@@ -713,11 +713,11 @@ export default function LowenResumeDemoHub() {
           {activePage === "work" ? (
             <div className="space-y-5">
               <div className="grid grid-cols-1 gap-4">
-                {capabilityCards.map((card, index) => (
+                {capabilityCards.map((card) => (
                   <section
                     id={`capability-${card.number}`}
                     key={card.number}
-                    className={`rounded-[22px] border border-zinc-200 bg-[#fcfcfb] p-4 shadow-[0_10px_24px_-22px_rgba(24,24,27,0.2)] `}
+                    className="rounded-[22px] border border-zinc-200 bg-[#fcfcfb] p-4 shadow-[0_10px_24px_-22px_rgba(24,24,27,0.2)]"
                   >
                     <div className="text-[11px] font-medium tracking-[0.18em] text-zinc-400">{card.number}</div>
                     <div className="mt-3 space-y-1">
@@ -750,6 +750,34 @@ export default function LowenResumeDemoHub() {
                           ))}
                         </div>
                       ) : null}
+                      {card.images?.length ? (
+                        <div className="mt-3 grid grid-cols-2 gap-2">
+                          {card.images.map((image) => (
+                            <figure key={image.src} className="overflow-hidden rounded-xl border border-zinc-200 bg-white">
+                              <img
+                                src={image.src}
+                                alt={image.alt}
+                                className="h-28 w-full object-cover"
+                                onError={(e) => {
+                                  const img = e.currentTarget;
+                                  img.style.display = "none";
+                                  const next = img.nextElementSibling as HTMLElement | null;
+                                  if (next) next.style.display = "flex";
+                                }}
+                              />
+                              <div className="hidden h-28 w-full items-center justify-center bg-zinc-50 px-2 text-center text-[11px] leading-5 text-zinc-400">
+                                圖片暫時無法載入
+                              </div>
+                            </figure>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
+          ) : null}
                       {card.images?.length ? (
                         <div className="mt-3 grid grid-cols-2 gap-2">
                           {card.images.map((image) => (
