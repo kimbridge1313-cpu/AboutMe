@@ -712,14 +712,12 @@ export default function LowenResumeDemoHub() {
 
           {activePage === "work" ? (
             <div className="space-y-5">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4">
                 {capabilityCards.map((card, index) => (
                   <section
                     id={`capability-${card.number}`}
                     key={card.number}
-                    className={`rounded-[22px] border border-zinc-200 bg-[#fcfcfb] p-4 shadow-[0_10px_24px_-22px_rgba(24,24,27,0.2)] ${
-                      index === capabilityCards.length - 1 ? "xl:col-span-3 xl:max-w-[28rem] xl:w-full xl:justify-self-center" : ""
-                    }`}
+                    className={`rounded-[22px] border border-zinc-200 bg-[#fcfcfb] p-4 shadow-[0_10px_24px_-22px_rgba(24,24,27,0.2)] `}
                   >
                     <div className="text-[11px] font-medium tracking-[0.18em] text-zinc-400">{card.number}</div>
                     <div className="mt-3 space-y-1">
@@ -777,7 +775,7 @@ export default function LowenResumeDemoHub() {
                     </div>
                   </section>
                 ))}
-              </div></div>
+              </div>
           ) : null}
         </main>
       </div>
